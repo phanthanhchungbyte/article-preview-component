@@ -1,0 +1,256 @@
+﻿:root {
+  --primary-color: hsl(217, 19%, 35%);
+  --secondary-color: hsl(210, 46%, 95%);
+  --ff-color-light: hsl(212, 23%, 69%);
+  --ff-color-dark: hsl(214, 17%, 51%);
+
+  --ff-main: 'Manrope', serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+}
+
+/* CSS Reset */
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  /* border: 1px solid red; */
+}
+
+
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  font-family: var(--ff-main);
+  font-weight: var(--fw-regular);
+  color: var(--ff-color-dark);
+  font-size: 0.8rem;
+  background-color: var(--secondary-color);
+
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+}
+
+/* product styling */
+.card {
+  display: grid;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-inline: 1.5rem;
+  overflow: hidden;
+}
+
+.card__img {
+  height: 200px;
+  background-image: url('./images/drawers.jpg');
+  background-position: center;
+  background-position-y: -1rem;
+  background-size: cover;
+}
+
+.card__content {
+  padding: 2rem;
+  padding-bottom: 0;
+
+  .title {
+    color: var(--primary-color);
+    font-weight: var(--fw-bold);
+    font-size: medium;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    line-height: 1.5;
+    font-size: 0.83rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.card__poster-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  padding-inline: 2rem;
+
+  .card__poster-data {
+    display: flex;
+    flex: 1;
+
+    img {
+      height: 2.5rem;
+      border-radius: 50%;
+    }
+
+    .card__poster-pi {
+      margin-left: 1rem;
+    }
+
+    .card__poster-pi p:first-child {
+      font-weight: var(--fw-bold);
+    }
+
+    .card__poster-pi p:last-child {
+      color: var(--ff-color-light);
+    }
+
+  }
+}
+
+.card__sharing-share, .card__poster-share {
+  cursor: pointer;
+}
+
+.card__sharing-mobile {
+  width: 100%;
+  padding: 1rem;
+  padding-inline: 2rem;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+
+
+  .card__sharing-links {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/* For the desktop */
+@media (min-width: 600px) {
+  .card {
+    overflow: visible;
+    position: relative;
+    grid-template-columns: 35% 65%;
+    max-width: 750px;
+    margin-inline: 5rem;
+    box-shadow: 0px 5px 20px -2px rgba(107, 107, 107, 0.91);
+  }
+
+  .card .card__img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .card__content {
+    .title {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .card__sharing-desktop {
+    position: absolute;
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-evenly;
+    border-radius: 7px;
+    right: 0;
+    transform: translateX(25%);
+    background-color: var(--ff-color-dark);
+    color: white;
+    width: 200px;
+    bottom: 4rem
+  }
+
+  .card__sharing-desktop::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-top: 0.6rem solid var(--ff-color-dark);
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+  }
+}
+
+/* Utilities classes */
+.hidden {
+  display: none;
+}
+
+.light-share {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: var(--secondary-color);
+
+  path {
+    fill: var(--ff-color-dark);
+  }
+}
+
+.dark-share {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+
+  path {
+    fill: white;
+  }
+}
